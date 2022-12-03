@@ -12,8 +12,8 @@ public class BaseballGame {
     private static final InputView inputView = new InputView();
     private static final Validate validate = new Validate();
     public void init(String input) {
-        validate.validateNumberRange(input);
         List<Integer> user = mappingToList(input);
+        validate.validateNumberRange(user);
     }
     public List<Integer> mappingToList(String input) {
         List<Integer> userNumber = new ArrayList<>();
