@@ -43,7 +43,8 @@ public class BaseballGame {
     }
     private Baseball inputUserBaseball() {
         User user = new User();
-        return user.getInput();
+        String number = inputView.readNumber();
+        return user.getInput(number);
     }
     private BaseballResult compareNumber(Baseball user, Baseball computer) {
         HashMap<String, Integer> check_result = checker.start(user, computer);

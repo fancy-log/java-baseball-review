@@ -10,8 +10,7 @@ import baseball.view.InputView;
 public class User {
     private static final InputView inputView = new InputView();
     private static final Validate validate = new Validate();
-    public Baseball getInput() {
-        String number = inputView.readNumber();
+    public Baseball getInput(String number) {
         List<Integer> user = mappingToList(number);
         validate.validateNumberRange(user);
         return new Baseball(user);
