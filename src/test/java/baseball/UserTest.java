@@ -14,7 +14,7 @@ class UserTest {
 
     @DisplayName("0 또는 서로 다른 3자리 숫자가 아니면 오류")
     @ParameterizedTest
-    @ValueSource(strings = {"1234", "111", "355", "010", "13579"})
+    @ValueSource(strings = {"1234", "111", "120", "010", "13579", "", " ", "null"})
     void NumberRangeError(String input) {
         Assertions.assertThatThrownBy(()->
                 user.getInput(input))
