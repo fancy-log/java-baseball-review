@@ -18,7 +18,6 @@ public class Application {
 
     private static void init() {
         outputView.printGameStart();
-        String number = inputView.readNumber();
-        baseballGame.init(number);
+        baseballGame.init();
     }
 }
