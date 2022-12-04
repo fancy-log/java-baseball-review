@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import baseball.model.Baseball;
@@ -12,30 +13,29 @@ public class BaseballGame {
     private static final OutputView outputView = new OutputView();
     private static final InputView inputView = new InputView();
     private static final Validate validate = new Validate();
+    BaseballResult baseballResult;
     Baseball baseball;
+    Checker checker = new Checker();
     private boolean flag = true;
     public void init() {
         Baseball computer = createComputerRandomNumber();
         while(flag) {
-            String number = inputView.readNumber();
-            List<Integer> user = mappingToList(number);
-            validate.validateNumberRange(user);
+            Baseball user = inputUserBaseball();
+            baseballResult = compareNumber(user, computer);
+            if(baseballResult.isAllCount()) {
+
+            }
         }
     }
     private Baseball createComputerRandomNumber() {
         return new Computer().createRandomNumber();
     }
-    public List<Integer> mappingToList(String input) {
-        List<Integer> userNumber = new ArrayList<>();
-        for(int index = 0; index < input.length(); index++) {
-            int digit = strToInt(input, index);
-            userNumber.add(digit);
-        }
-        return userNumber;
+    private Baseball inputUserBaseball() {
+        User user = new User();
+        return user.getInput();
     }
-    public int strToInt(String input, int index) {
-        char c = input.charAt(index);
-        int value = Character.getNumericValue(c);
-        return value;
+    public BaseballResult compareNumber(Baseball user, Baseball computer) {
+        HashMap<String, Integer> check_result = checker.start(user, computer);
+        return new BaseballResult(check_result);
     }
 }

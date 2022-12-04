@@ -10,4 +10,20 @@ public class Baseball {
     public Baseball(List<Integer> baseballNumber) {
         this.baseballNumber = baseballNumber;
     }
+
+    public int size() {
+        return baseballNumber.size();
+    }
+    public List<Integer> getBaseballNumber() {
+        return baseballNumber;
+    }
+    public boolean hasNumber(int idx, int number) {
+        if(baseballNumber.get(idx) == number) {
+            return true;
+        }
+        return false;
+    }
+    public int getNumber(int idx) {
+        return baseballNumber.get(idx);
+    }
 }
