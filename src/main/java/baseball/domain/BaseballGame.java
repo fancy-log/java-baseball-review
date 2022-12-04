@@ -1,8 +1,6 @@
-package baseball;
+package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import baseball.model.Baseball;
 import baseball.util.Validate;
