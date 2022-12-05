@@ -1,5 +1,6 @@
 package baseball.util;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -11,8 +12,8 @@ public class Validate {
     private static final int QUIT = 2;
 
     public void validateNumberRange(List<Integer> user) {
-
-        if(Set.copyOf(user).size() != BASEBALL_LENGTH) {
+        Set<Integer> userNoDuplicate = new HashSet<>(user);
+        if(userNoDuplicate.size() != user.size()) {
             throw new IllegalArgumentException(ERROR_MESSAGE + "서로 다른 3자리 숫자만 입력 가능합니다.");
         }
         if(!isCorrectForm(user)) {

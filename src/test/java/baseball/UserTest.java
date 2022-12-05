@@ -2,8 +2,14 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -27,5 +33,18 @@ class UserTest {
     void NumberRangeOk(String input) {
         assertDoesNotThrow(()->
             user.getInput(input));
+    }
+
+    @DisplayName("중복인지 확인")
+    @Test
+    void DuplicateTest() {
+        List<Integer> userDuplicate = Arrays.asList(1,1,2,3,4,5);
+        // Set 으로 변환
+        Set<Integer> userNoDuplicate = new HashSet<>(userDuplicate);
+        if(userNoDuplicate.size() != userDuplicate.size()) {
+            System.out.println("중복된 요소가 있습니다.");
+            System.out.println("전체 개수는 " + userDuplicate.size() + "개 입니다.");
+            System.out.println("중복되지 않은 개수는 " + userNoDuplicate.size()+ "개 입니다.");
+        }
     }
 }
