@@ -5,10 +5,9 @@ import java.util.List;
 
 import baseball.model.Baseball;
 import baseball.util.Validate;
-import baseball.view.InputView;
 
 public class User {
-    private static final InputView inputView = new InputView();
+
     private static final Validate validate = new Validate();
     public Baseball getInput(String number) {
         List<Integer> user = mappingToList(number);
