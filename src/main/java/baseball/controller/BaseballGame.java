@@ -32,7 +32,7 @@ public class BaseballGame {
     private void gameStart() {
         BaseballGameResult result;
         while (flag) {
-            String input = inputView.readNoDuplicateNumber();
+            String input = inputView.readNumber();
             Baseball user = transformInputNumbers(input);
             result = user.compare(computer);
             result.showResult();
