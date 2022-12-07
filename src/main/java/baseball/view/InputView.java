@@ -13,12 +13,4 @@ public class InputView {
         validate.validationNumber(number);
         return number;
     }
-
-    public String readRestartOrEnd() {
-        outputView.printRestartOrEnd();
-
-        String input = Console.readLine();
-        validate.validationRestartOrEnd(input);
-        return input;
-    }
 }
