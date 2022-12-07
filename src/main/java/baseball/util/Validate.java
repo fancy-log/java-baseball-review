@@ -9,14 +9,24 @@ public class Validate {
     private static final int MIN_NUMBER = 1;
     private static final int RESTART_NUM = 1;
     private static final int END_NUM = 2;
+    private static final int INPUT_LENGTH = 3;
 
     public void validationNumber(String input) {
+        if (!checkInputLength(input)) {
+            throw new IllegalArgumentException(ERROR_INPUT_SIZE);
+        }
         if (!checkDuplicateNumber(input)) {
             throw new IllegalArgumentException(ERROR_NUMBER_SIZE);
         }
         if (!checkNumberRange(input)) {
             throw new IllegalArgumentException(ERROR_NUMBER_RANGE);
         }
+    }
+
+    private boolean checkInputLength(String input) {
+        if (input.length() != INPUT_LENGTH)
+            return false;
+        return true;
     }
 
     private boolean checkDuplicateNumber(String input) {
@@ -37,9 +47,8 @@ public class Validate {
         return true;
     }
 
-    public void validationRestartOrEnd(String input) {
-        int num = Integer.parseInt(input);
-        if (num != RESTART_NUM && num != END_NUM) {
+    public void validationRestartOrEnd(int input) {
+        if (input != RESTART_NUM && input != END_NUM) {
             throw new IllegalArgumentException(ERROR_RESTART_OR_END);
         }
     }
