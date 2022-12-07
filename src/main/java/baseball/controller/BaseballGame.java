@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import baseball.model.Baseball;
+import baseball.model.BaseballGameResult;
 import baseball.model.BaseballMaker;
 import baseball.model.BaseballRandomNumberGenerator;
 import baseball.util.Validate;
@@ -19,20 +20,22 @@ public class BaseballGame {
     private boolean flag = true;
 
     public void run() {
-        outputView.printGameStart();
         init();
         gameStart();
     }
 
     private void init() {
+        outputView.printGameStart();
         computer = new Baseball(baseballMaker.makeNumber());
     }
 
     private void gameStart() {
+        BaseballGameResult result;
         while (flag) {
             String input = inputView.readNoDuplicateNumber();
-            validate.validationNumber(input);
             Baseball user = transformInputNumbers(input);
+            result = user.compare(computer);
+            result.showResult();
         }
     }
 
@@ -43,4 +46,5 @@ public class BaseballGame {
         }
         return new Baseball(user);
     }
+
 }
