@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballMaker {
-    BaseballRandomNumberGenerator baseballRandomNumberGenerator;
+    private final BaseballRandomNumberGenerator baseballRandomNumberGenerator;
     private static final int NUMBER_SIZE = 3;
 
     public BaseballMaker(BaseballRandomNumberGenerator baseballRandomNumberGenerator) {
