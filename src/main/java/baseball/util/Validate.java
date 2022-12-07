@@ -7,6 +7,8 @@ import java.util.Arrays;
 public class Validate {
     private static final int MAX_NUMBER = 9;
     private static final int MIN_NUMBER = 1;
+    private static final int RESTART_NUM = 1;
+    private static final int END_NUM = 2;
 
     public void validationNumber(String input) {
         if (!checkDuplicateNumber(input)) {
@@ -33,5 +35,12 @@ public class Validate {
             }
         }
         return true;
+    }
+
+    public void validationRestartOrEnd(String input) {
+        int num = Integer.parseInt(input);
+        if (num != RESTART_NUM && num != END_NUM) {
+            throw new IllegalArgumentException(ERROR_RESTART_OR_END);
+        }
     }
 }

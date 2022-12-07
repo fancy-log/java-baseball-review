@@ -18,6 +18,7 @@ public class InputView {
         outputView.printRestartOrEnd();
 
         String input = Console.readLine();
+        validate.validationRestartOrEnd(input);
         return input;
     }
 }
