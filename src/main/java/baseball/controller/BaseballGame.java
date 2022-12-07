@@ -2,6 +2,7 @@ package baseball.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import baseball.model.Baseball;
 import baseball.model.BaseballGameResult;
@@ -20,8 +21,10 @@ public class BaseballGame {
     private boolean flag = true;
 
     public void run() {
-        init();
-        gameStart();
+        while (reStart()) {
+            init();
+            gameStart();
+        }
     }
 
     private void init() {
@@ -36,7 +39,11 @@ public class BaseballGame {
             Baseball user = transformInputNumbers(input);
             result = user.compare(computer);
             result.showResult();
+            if (result.isSuccess()) {
+                flag = false;
+            }
         }
+        outputView.printSuccess();
     }
 
     private Baseball transformInputNumbers(String input) {
@@ -47,4 +54,7 @@ public class BaseballGame {
         return new Baseball(user);
     }
 
+    private boolean reStart() {
+        return Objects.equals(inputView.readRestartOrEnd(), "1");
+    }
 }

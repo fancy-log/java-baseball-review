@@ -15,4 +15,11 @@ public class BaseballGameResult {
     public void showResult() {
         outputView.printResult(ballCount, strikeCount);
     }
+
+    public boolean isSuccess() {
+        if (strikeCount == 3) {
+            return true;
+        }
+        return false;
+    }
 }
