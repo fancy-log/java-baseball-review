@@ -1,7 +1,9 @@
 package baseball.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import baseball.model.Baseball;
 import baseball.model.BaseballMaker;
 import baseball.model.BaseballRandomNumberGenerator;
 import baseball.util.Validate;
@@ -13,17 +15,32 @@ public class BaseballGame {
     private static final OutputView outputView = new OutputView();
     private static final Validate validate = new Validate();
     BaseballMaker baseballMaker = new BaseballMaker(new BaseballRandomNumberGenerator());
+    Baseball computer;
+    private boolean flag = true;
 
     public void run() {
         outputView.printGameStart();
         init();
+        gameStart();
     }
 
     private void init() {
-        List<Integer> computer = baseballMaker.makeNumber();
-        String input = inputView.readNoDuplicateNumber();
-        validate.validationNumber(input);
-        System.out.println("computer : " + computer);
-        System.out.println("user : " + input);
+        computer = new Baseball(baseballMaker.makeNumber());
+    }
+
+    private void gameStart() {
+        while (flag) {
+            String input = inputView.readNoDuplicateNumber();
+            validate.validationNumber(input);
+            Baseball user = transformInputNumbers(input);
+        }
+    }
+
+    private Baseball transformInputNumbers(String input) {
+        List<Integer> user = new ArrayList<>();
+        for (char number : input.toCharArray()) {
+            user.add(Character.getNumericValue(number));
+        }
+        return new Baseball(user);
     }
 }
