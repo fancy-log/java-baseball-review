@@ -13,7 +13,7 @@ public class Validate {
     private static final int INPUT_LENGTH = 3;
 
     public void validationNumber(String input) {
-        if (!checkInputLength(input)) {
+        if (checkInputLength(input)) {
             throw new IllegalArgumentException(ERROR_INPUT_SIZE);
         }
         if (!checkDuplicateNumber(input)) {
