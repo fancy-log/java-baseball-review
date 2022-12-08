@@ -3,6 +3,7 @@ package baseball.util;
 import static baseball.util.ExceptionMessage.*;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Validate {
     private static final int MAX_NUMBER = 9;
@@ -43,6 +44,12 @@ public class Validate {
             }
         }
         return true;
+    }
+
+    private boolean checkNumberRange2(String input) {
+        return IntStream.range(0, input.length())
+            .noneMatch(
+                i -> Character.getNumericValue(input.charAt(i)) < 1 || Character.getNumericValue(input.charAt(i)) > 9);
     }
 
     public void validationRestartOrEnd(int input) {
