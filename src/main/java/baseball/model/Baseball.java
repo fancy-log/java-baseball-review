@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Baseball {
     List<Integer> baseball;
@@ -21,6 +22,12 @@ public class Baseball {
             }
         }
         return ball;
+    }
+
+    private int countBall2(Baseball inputNumbers) {
+        return (int)IntStream.range(0, baseball.size())
+            .filter(index -> inputNumbers.isContainNumber(baseball.get(index), index))
+            .count();
     }
 
     private boolean isContainNumber(int number, int position) {
