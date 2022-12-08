@@ -24,9 +24,7 @@ public class Validate {
     }
 
     private boolean checkInputLength(String input) {
-        if (input.length() != INPUT_LENGTH)
-            return false;
-        return true;
+        return (input.length() != INPUT_LENGTH);
     }
 
     private boolean checkDuplicateNumber(String input) {
