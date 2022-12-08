@@ -3,6 +3,7 @@ package baseball.model;
 import baseball.view.OutputView;
 
 public class BaseballGameResult {
+    private static final int ALL_SUCCESS = 3;
     private int ballCount;
     private int strikeCount;
     private static final OutputView outputView = new OutputView();
@@ -17,7 +18,7 @@ public class BaseballGameResult {
     }
 
     public boolean isSuccess() {
-        if (strikeCount == 3) {
+        if (strikeCount == ALL_SUCCESS) {
             return true;
         }
         return false;
