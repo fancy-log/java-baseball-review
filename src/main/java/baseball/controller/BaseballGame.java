@@ -39,11 +39,11 @@ public class BaseballGame {
             result = user.compare(computer);
             result.showResult();
             if (result.isSuccess()) {
+                outputView.printSuccess();
                 int restartAnswer = inputView.readRestartNumber();
                 restartGame(restartAnswer);
             }
         }
-        outputView.printSuccess();
     }
 
     private Baseball transformInputNumbers(String input) {
