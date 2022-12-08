@@ -37,7 +37,8 @@ public class BaseballGame {
             String input = inputView.readNumber();
             Baseball user = transformInputNumbers(input);
             result = user.compare(computer);
-            result.showResult();
+            // result.showResult();
+            outputView.printResult(result);
             if (result.isSuccess()) {
                 outputView.printSuccess();
                 int restartAnswer = inputView.readRestartNumber();
