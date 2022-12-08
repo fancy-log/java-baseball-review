@@ -10,13 +10,12 @@ import baseball.model.BaseballRandomNumberGenerator;
 import baseball.util.Validate;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
     private static final InputView inputView = new InputView();
     private static final OutputView outputView = new OutputView();
     private static final Validate validate = new Validate();
-    private static final BaseballMaker baseballMaker = new BaseballMaker(new BaseballRandomNumberGenerator());
+    private BaseballMaker baseballMaker = new BaseballMaker(new BaseballRandomNumberGenerator());
     private static Baseball computer;
     private boolean flag = true;
     private static final int RESTART = 1;
@@ -40,7 +39,7 @@ public class BaseballGame {
             result = user.compare(computer);
             result.showResult();
             if (result.isSuccess()) {
-                int restartAnswer = askRestart();
+                int restartAnswer = inputView.readRestartNumber();
                 restartGame(restartAnswer);
             }
         }
@@ -53,18 +52,6 @@ public class BaseballGame {
             user.add(Character.getNumericValue(number));
         }
         return new Baseball(user);
-    }
-
-    private int askRestart() {
-        outputView.printRestartOrEnd();
-        int askNumber = getRestart();
-        return askNumber;
-    }
-
-    private int getRestart() {
-        String reInput = Console.readLine();
-        int reInputNum = Integer.parseInt(reInput);
-        return reInputNum;
     }
 
     private void restartGame(int restartAnswer) {

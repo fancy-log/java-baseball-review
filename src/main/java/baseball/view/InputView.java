@@ -13,4 +13,11 @@ public class InputView {
         validate.validationNumber(number);
         return number;
     }
+
+    public int readRestartNumber() {
+        outputView.printRestartOrEnd();
+        String input = Console.readLine();
+        int number = Integer.parseInt(input);
+        return number;
+    }
 }
